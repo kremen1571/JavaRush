@@ -20,13 +20,20 @@ public class Solution {
         //напиште тут ваш код
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
-
+        int b;
         while(!str.equals("exit")) {
             if (str.indexOf('.') != -1) {
-                print(Double.parseDouble(str));
+                try {
+                    print(Double.parseDouble(str));
+                } catch (Exception w) {
+                    print(str);
+                }
             } else {
                 try {
-                    print(Byte.parseByte(str));
+                    b = Byte.parseByte(str);
+                    if (b > 0 && b < 128)
+                        print(Byte.parseByte(str));
+                    else throw new Exception();
                 } catch (Exception e) {
                     try {
                         print(Integer.parseInt(str));
